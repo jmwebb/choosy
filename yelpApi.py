@@ -8,8 +8,8 @@ firebase = firebase.FirebaseApplication('https://projectfor551.firebaseio.com/',
 def uploadB(query="losangeles", term="restaurants"):  #For uploading to firebase
     """
     upload data on 1000 restaurants searched by conditions
-    :param query: optional, default value = "losangeles", case insensitive
-    :param term: optional, default value = "restaurants"
+    :param query: optional, location, default value = "losangeles", case insensitive
+    :param term: optional, business types, default value = "restaurants"
     """
     request_headers = {
     "Accept-Language": "en-US,en;q=0.5",
