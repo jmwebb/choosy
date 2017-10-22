@@ -29,7 +29,7 @@ def uploadB(query="losangeles", term="restaurants"):  #For uploading to firebase
         data = json.load(json_obj)
         for k in range(0,50):
             dt["businesses"].append(data["businesses"][k])
-            firebase.put('/restaurants','"%s"'%dt["businesses"][k+i]["id"],dt["businesses"][k+i])
+            firebase.put('/'+terms,'"%s"'%dt["businesses"][k+i]["id"],dt["businesses"][k+i])
         i = i + 50
 
 """
