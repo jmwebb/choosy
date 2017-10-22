@@ -31,5 +31,22 @@ for special requirements like reservation, delivery and pick up
 ### is_closed
 definitely false
 
-### distance
-may use this
+### distance(not now)
+HTML5 getCurrentLocation() method can be used in app to get user's location
+```
+<script>
+var x = document.getElementById("demo");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude; 
+}
+</script>
+```
+
