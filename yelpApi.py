@@ -70,7 +70,7 @@ def uploadB(query):  #For uploading to firebase
         data = json.load(json_obj)
         for k in range(0,50):
             dt["businesses"].append(data["businesses"][k])
-            firebase.put('/restaurants','"%s"'%dt["businesses"][k]["id"],dt["businesses"][k])
+            firebase.put('/restaurants','"%s"'%dt["businesses"][k+i]["id"],dt["businesses"][k])
         i = i + 50
 
 def main():
