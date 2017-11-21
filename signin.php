@@ -9,7 +9,7 @@
     if(password == inf551) {
       document.write("Hello you got signed in successfully");
     } else {
-      document.write("Who are you?");
+      document.write("Password is wrong. Please retype your password");
     }
   </script>
 </body>
