@@ -1,0 +1,431 @@
+<html>
+<head>
+  <title>Choosy Test</title>
+  <style>
+  /* Style the tab buttons */
+  .tablink {
+      background-color: #ff9800;
+      color: white;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      font-size: 17px;
+      width: 25%;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tablink:hover {
+      background-color: #777;
+  }
+  
+  /* Set default styles for tab content */
+  .tabcontent {
+      color: white;
+      display: none;
+      padding: 50px;
+      text-align: center;
+  }
+  
+  /* Style each tab content individually */ 
+  #First {background-color:rgb(226, 109, 41);}
+  #Second {background-color:rgb(247, 167, 31);}
+  #Third {background-color:rgb(226, 109, 41);}
+  #Fourth {background-color:rgb(247, 167, 31);}
+  /* Add a black background color to the top navigation */
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: #e68a00;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: rgb(255, 239, 233);
+    color: white;
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 150px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.btn{
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.choose {background-color: #ff9800;}
+.choose:hover {background: #e68a00;}
+.default {background-color: #333;}
+.default:hover {background: #ddd}
+
+/* Style the Image Used to Trigger the Modal */
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#myImg04 {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+#myImg04:hover {opacity: 0.7;}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption { 
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: rgb(228, 162, 123); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 350px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    text-align: center;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+</style>
+<script>function openCity(cityName, elmnt, color) {
+  // Hide all elements with class="tabcontent" by default */
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+  }
+
+  // Remove the background color of all tablinks/buttons
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].style.backgroundColor = "";
+  }
+
+  // Show the specific tab content
+  document.getElementById(cityName).style.display = "block";
+
+  // Add the specific color to the button used to open the tab content
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();</script>
+</head>
+<body onload="openNav()">
+<h1 onclick="openNav()" style="padding:10px;">Choosy<img src="/Users/yun/virtual/myProject/orange-icon.png" style="width:42px; height:42px; padding:2px;"></h1>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#" style="font-size:30px;">Where to eat today?</a>
+    <a href="#" onclick="closeNav()" style="font-size:50px;">Choosy! </a>
+    <a href="#" style="font-size:30px;">Log in</a>
+    <a href="#" style="font-size:30px;">Contact</a>
+  </div>
+  <div id="test"></div>
+  <!-- Use any element to open the sidenav -->
+  
+  <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+  <!--  <div id="main"></div> -->
+<div class="topnav" id="myTopnav">
+  <a href="#home">Home</a>
+  <a href="#statistics">Statistics</a>  
+  <a href="#about" >About Us</a>
+  <a href="#account" style="float:right">Account</a>
+</div>
+
+<div class="row">
+  <div class="column" style="background-color: rgb(226, 109, 41); border-right:0px solid #333; color:white;"><p>Do you like...</p><h2 style="text-align:center;">Burgers?<h2></div>
+  <div class="column" style="background-color: rgb(226, 109, 41);color:white;"><p>Or like...</p><h2 style="text-align:center;">Japanese Food?</h2></div>
+</div>
+<button class="btn choose" style="float:left; width:50%; border-right: 0px solid #333;">Choosy!</button>
+<button class="btn choose" style="width:50%;">Choosy!</button>
+<button class="btn default" style="width:100%">Don't like both</button>
+<button class="tablink" onclick="openCity('First', this, 'rgb(226, 109, 41)')" id="defaultOpen"></button>
+<button class="tablink" onclick="openCity('Second', this, 'rgb(247, 167, 31)')" >Jinya</button>
+<button class="tablink" onclick="openCity('Third', this, 'rgb(226, 109, 41)')" >In-n-out</button>
+<button class="tablink" onclick="openCity('Fourth', this, 'rgb(247, 167, 31)')" >Sun Nong Dan</button>
+<div id="First" class="tabcontent">
+    <h3 id="FirstChoice"></h3>
+    <p>Price:$ &nbsp;
+    <img src="https://firebasestorage.googleapis.com/v0/b/projectfor551.appspot.com/o/starts%2Fregular_4_half.png?alt=media&token=dfbbe805-a3dd-4e8e-8e9b-ab9e12bfe741" style="filter: saturate(150%);">
+    </p>
+    <!-- Trigger the Modal -->
+  <img id="myImg"  alt="Dirt Dog" width="300" height="200">
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+  </div>
+    <p>Wanna Eat Here?</p>
+    <p>Location: 2528 S Figueroa St</p>
+    <button class="btn default" style="width:25%;">Drive!</button>
+    <button class="btn default" style="width:25%";>Lyft!</button>
+  </div>
+  
+  <div id="Second" class="tabcontent">
+    <h3>Jinya</h3>
+    <p>Information</p> 
+  </div>
+  
+  <div id="Third" class="tabcontent">
+    <h3>In-n-out</h3>
+    <p>Information</p>
+  </div>
+  
+  <div id="Fourth" class="tabcontent">
+    <h3>Sun Nong Dan</h3>
+    <p>Price:$$    Rating:4.5</p>
+    <!-- Trigger the Modal -->
+  <img id="myImg04" src="https://s3-media4.fl.yelpcdn.com/bphoto/ws46vP-TsWjyikqvtcX7pw/o.jpg" alt="Sun Nong Dang" width="300" height="200">
+
+  <!-- The Modal -->
+  <div id="myModal4" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img04">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption04"></div>
+  </div>
+    <p>Location: 3470 W 6th St</p>
+    <p>Wanna Eat Here?</p>
+    
+  </div>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBqllNTmUWBC0_bxqYRcFNV7dDeQ2_3bTc",
+    authDomain: "projectfor551.firebaseapp.com",
+    databaseURL: "https://projectfor551.firebaseio.com",
+    projectId: "projectfor551",
+    storageBucket: "projectfor551.appspot.com",
+    messagingSenderId: "444274029048"
+  };
+  firebase.initializeApp(config);
+//Show information in Firebase using Javascript
+  var value = document.getElementById("FirstChoice");
+  var value1 = document.getElementById("defaultOpen")
+  var path = "restaurants/\"dirt-dog-los-angeles-4\"/name";
+  var dbRef = firebase.database().ref(path);
+  dbRef.on('value', snap => value.innerText = snap.val());
+  dbRef.on('value', snap => value1.innerText = snap.val());
+
+  var ima = document.getElementById("myImg");
+  var path2 = "restaurants/\"dirt-dog-los-angeles-4\"/image_url";
+  var dbRef = firebase.database().ref(path2);
+  dbRef.on('value', snap => ima.setAttribute("src", snap.val()));
+
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+var modal4 = document.getElementById('myModal4');
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var img04 = document.getElementById('myImg04');
+var modalImg = document.getElementById("img01");
+var modalImg04 = document.getElementById('img04')
+var captionText = document.getElementById("caption04");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+img04.onclick = function(){
+    modal4.style.display = "block";
+    modalImg04.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+var span04 = document.getElementsByClassName("close")[1];
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+span04.onclick = function() { 
+  modal4.style.display = "none";
+}
+
+//Sidenav Full-width
+/* Open the sidenav */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+}
+
+/* Close/hide the sidenav */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+<script>
+
+</script>
+</body>
+
+</html>
