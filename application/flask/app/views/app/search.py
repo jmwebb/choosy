@@ -35,6 +35,8 @@ def search(request):
 	for key in request.args:
 		category_filters[key] = bool(int(request.args.get(key)))
 
+	results['is_first_question'] = int(len(category_filters) == 0)
+
 	restaurants = getter.restaurants(category_filters)
 
 	results['next_question'] = next_question(restaurants, category_filters)

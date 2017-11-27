@@ -1,3 +1,148 @@
+#banner-logo {
+	font-size: 50px;
+	left: 10px;
+	position: absolute;
+	top: 25px;
+
+}
+
 body {
-	background-color: red;
+	background-color: #D07343;
+	height: 100%;
+}
+
+.card {
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  	-webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  	transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card::after {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card:hover {
+	cursor: pointer;
+	box-shadow: 0 15px 15px rgba(0,0,0,0.5);
+	-webkit-transform: scale(1.05, 1.05);
+	transform: scale(1.05, 1.05);
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.card-group {
+	align-items: flex-start;
+	justify-content: center;
+}
+
+@media (min-width: 576px) {
+	.card-group .card {
+		max-width: 250px;
+		margin: 10px 20px;
+	}
+}
+
+.card-img-top {
+	max-height: 250px;
+}
+
+#content {
+	margin-left: 20%;
+	text-align: center;
+	width: auto;
+}
+
+h1, h2, h3, h4 {
+	color: #1F271B
+}
+
+html {
+	height: 100%;
+}
+
+.logo {
+	font-family: 'Modak', cursive;
+}
+
+.logo > a {
+	color: #1F271B
+}
+
+.logo > a:hover {
+	text-decoration: none;
+}
+
+.nav {
+	background-color: #EE9B44;
+}
+
+#no {
+	background-color: #EC0B43;
+}
+
+#no:hover {
+	background-color:rgb(196,38,67);
+}
+
+
+#side-nav {
+	display: block;
+	align-items: center;
+	float: left;
+	height: 100%;
+	max-height: 100%;
+	width: 20%;
+	border-right: 20px solid #1F271B;
+	overflow-y: scroll;
+}
+
+
+#top-nav {
+	height: 120px;
+	border-bottom: 20px solid #1F271B;
+}
+
+#top-nav > li > a {
+	padding-top: 0;
+	padding-bottom: 0;
+	line-height: 100px;
+}
+
+#yes {
+	background-color: #5FAD56;
+}
+
+#yes:hover {
+	background-color:rgb(88,158,79);
+}
+
+#yes-no {
+	margin-top: 50px;
+	justify-content: space-between;
+	width: 75%;
+}
+
+#yes-no button {
+	border-radius: 5px;
+	border: 1px solid white;
+	padding: 10px;
+	height: 100px;
+	width: 300px;
+}
+
+button:hover {
+	cursor: pointer;
 }

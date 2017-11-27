@@ -14,8 +14,9 @@ from app.views.app import search as app_search
 # Also specifies resource locations
 # e.g. templates are found in 
 # <path to choosy>/application/flask/app/templates
-application = Blueprint('application', __name__
-	,template_folder='../templates')
+application = Blueprint('application', __name__, 
+	template_folder='../templates',
+	static_folder='../static')
 
 
 @application.route('/')

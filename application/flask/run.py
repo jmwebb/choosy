@@ -8,7 +8,7 @@ from app.routes.api import api
 from app.routes.application import application
 
 # Load the Flask app
-app = Flask(__name__)
+app = Flask(__name__, static_folder='app/static/')
 firebase = firebase.FirebaseApplication('https://projectfor551.firebaseio.com/', None)
 
 # Register blueprints, which contain the

@@ -5,5 +5,35 @@ Search
 {% endblock %}
 
 {% block content %}
-Search
+{% if results.next_question %}
+	<h2 style="margin-bottom: 40px;">Are you in the mood for {{ results.next_question.title }}?</h2>
+{% else %}
+	<h2>Thank you for choosing with Choosy!</h2>
+	<h2 style="margin-bottom: 40px;">Please click your final choice:</h2>
+{% endif %}
+{% if results.next_question %}
+	<div id="yes-no" class="btn-group btn-group-lg" role="group">
+		<button id="yes" onclick="appendFilter(1, {{results.is_first_question}}, '{{results.next_question.alias}}')" type="button" class="btn btn-primary">Yes!</button>
+		<button id="no" onclick="appendFilter(0, {{results.is_first_question}}, '{{results.next_question.alias}}')" type="button" class="btn btn-primary">Not right now.</button>
+	</div>
+{% else %}
+	<div class="card-group">
+		{% for id, restaurant in results.restaurants.items() %}
+		<div class="card" onclick="putSelection(id)">
+		    <img class="card-img-top" src="{{ restaurant.image_url }}" alt="Card image cap">
+		    <div class="card-body">
+		      <h4 class="card-title" style="margin-bottom: 0;">{{ restaurant.name }}</h4>
+		      <p class="card-text"><small>{{ restaurant.categories[0].title }}</small></p>
+		      <p class="card-text">
+		      	{% for i in range((restaurant.rating+0.5)|string|int) %}
+		      		&starf;
+		      	{% endfor %}
+		      </p>
+		      <a href="{{ restaurant.url }}" class="card-link">See on Yelp</a>
+		    </div>
+		  </div>
+		{% endfor %}
+	</div>
+{% endif %}
+<script src="{{ url_for('application.static',filename='js/search.js') }}"></script>
 {% endblock %}
