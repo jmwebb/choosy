@@ -1,10 +1,33 @@
+from firebase import firebase
 from flask import Blueprint
+from flask import jsonify
+from flask import request
+import json
 
-api = Blueprint('api', __name__)
+from app.views.api import categories as api_categories
+from app.views.api import restaurants as api_restaurants
 
-@api.route('/test')
-def index():
-	return 'Hello World!'
+api = Blueprint('api', __name__, url_prefix='/api')
+
+
+# @api.route('/restaurant', methods=['GET', 'POST'])
+# def restaurant():
+# 	return api_view.restaurant()
+
+###############################################################################
+#																			  #
+#																			  #
+#																			  #
+###############################################################################
+
+@api.route('/categories', methods=['GET'])
+def categories():
+	return api_categories.get()
+
+
+@api.route('/restaurants', methods=['GET'])
+def restaurants():
+	return api_restaurants.get(request)
 
 
 

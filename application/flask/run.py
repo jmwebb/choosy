@@ -1,4 +1,5 @@
 #!flask/bin/python
+from firebase import firebase
 from flask import Flask
 from flask_login import LoginManager
 from flask_wtf.csrf import CSRFProtect
@@ -8,10 +9,11 @@ from app.routes.application import application
 
 # Load the Flask app
 app = Flask(__name__)
+firebase = firebase.FirebaseApplication('https://projectfor551.firebaseio.com/', None)
 
 # Register blueprints, which contain the
 # routes for this application
-app.register_blueprint(api)
+app.register_blueprint(api, url_prefix='/api')
 app.register_blueprint(application)
 
 # Load login manager
@@ -26,6 +28,9 @@ login_manager.login_view = '/login'
 
 # Set secret key
 app.secret_key = 'super secret key'
+
+# Set slash strictness
+app.url_map.strict_slashes = False
 
 csrf = CSRFProtect(app)
 def create_app():

@@ -8,6 +8,7 @@ from flask_login import login_required
 from flask_login import login_user
 
 from app.forms.login_form import LoginForm
+from app.views.app import search as app_search
 
 # Blueprint specifies name of route for access by run.py
 # Also specifies resource locations
@@ -28,10 +29,10 @@ def login():
 	# client-side form data. For example, WTForms is a library that will
 	# handle this for us, and we use a custom LoginForm to validate.
 	form = LoginForm(request.form)
-	valid = form.validate_on_submit()
-	if valid:
+	if form.validate_on_submit():
 		# Login and validate the user.
 		# user should be an instance of your `User` class
+		# form.
 		login_user(user)
 
 		flash('Logged in successfully.')
@@ -49,5 +50,10 @@ def login():
 @application.route('/logout')
 @login_required
 def logout():
-    logout_user()
-    return redirect('/login')
+	logout_user()
+	return redirect('/login')
+
+
+@application.route('/search', methods=['GET'])
+def search():
+	return app_search.search(request)
