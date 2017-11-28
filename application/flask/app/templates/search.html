@@ -6,9 +6,9 @@ Search
 
 {% block content %}
 {% if results.next_question %}
-	<h2 style="margin-bottom: 40px;">Are you in the mood for {{ results.next_question.title }}?</h2>
+	<h2 style="margin-bottom: 40px; margin-top: 40px;">Are you in the mood for {{ results.next_question.title }}?</h2>
 {% else %}
-	<h2>Thank you for choosing with Choosy!</h2>
+	<h2 style="margin-top: 40px;">Thank you for choosing with Choosy!</h2>
 	<h2 style="margin-bottom: 40px;">Please click your final choice:</h2>
 {% endif %}
 {% if results.next_question %}
@@ -19,7 +19,8 @@ Search
 {% else %}
 	<div class="card-group">
 		{% for id, restaurant in results.restaurants.items() %}
-		<div class="card" onclick="putSelection(id)">
+		{% if loop.index <= 5 %}
+		<div class="card" onclick="putSelection({{id}},'{{results.user.username}}', '{{ restaurant.url }}')">
 		    <img class="card-img-top" src="{{ restaurant.image_url }}" alt="Card image cap">
 		    <div class="card-body">
 		      <h4 class="card-title" style="margin-bottom: 0;">{{ restaurant.name }}</h4>
@@ -32,6 +33,7 @@ Search
 		      <a href="{{ restaurant.url }}" class="card-link">See on Yelp</a>
 		    </div>
 		  </div>
+		  {% endif %}
 		{% endfor %}
 	</div>
 {% endif %}

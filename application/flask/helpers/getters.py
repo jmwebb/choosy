@@ -11,6 +11,11 @@ class Getters():
 			alias_list.append(category.get('alias'))
 		return alias_list
 
+	@classmethod
+	def restaurant(scope, _id):
+		response = firebase.get('/restaurants/' + '\"' + _id + '\"', None)
+		return response
+
 
 	@classmethod
 	def restaurants(scope, category_filters):
@@ -23,6 +28,12 @@ class Getters():
 				results[_id] = restaurant
 
 		return results
+
+
+	@classmethod
+	def user(scope, _id):
+		response = firebase.get('/users/' + _id, None)
+		return response
 
 
 	@classmethod

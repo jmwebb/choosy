@@ -17,20 +17,35 @@
 	<body>
 		<ul id="top-nav" class="nav justify-content-end">
 			<h1 id="banner-logo" class="logo">
-				<a href="/search">Choosy</a>
+				<a href="/{{ results.user.username }}/search">Choosy</a>
 			</h1>
 		  	<li class="nav-item">
-				<a class="nav-link active" href="#">Profile</a>
+				<a class="nav-link active" href="/logout">Logout</a>
 		  	</li>
 		</ul>
 		<ul id="side-nav" class="nav flex-column">
-			<li class="nav-item">
-				Food history:
+			<li class="nav-item" style="text-align: center">
+				{{ results.user.first_name }}'s food history:
+			</li>
+			{% if results.user.history %}
+				{% for restaurant in results.user.history %}
+					<div class="card" style="width: 100%; background-color: #EE9B44;">
+						<img class="card-img-top" src="{{ restaurant.image_url }}" alt="Card image cap">
+  						<div class="card-body">
+						    <h4 class="card-title">{{restaurant.name}}</h4>
+						    <a href="{{ restaurant.url }}" target="_blank" class="card-link">See on Yelp</a>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+			<li>
+
 			</li>
 		</ul>
 		<div id="content">{% block content %}{% endblock %}</div>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</body>
 </html>
